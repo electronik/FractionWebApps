@@ -1,0 +1,111 @@
+<html><head><title>Fraction Addition Training Application Thingy</title>
+<link rel="stylesheet" type="text/css" href="StyleSheet.css"></head>
+
+<body>
+<center>
+<p>Add the two displayed fractions together and write the answer in simplest form. Post the answer's numerator in the top input-box, and the denominator on the bottom. In the event that the answer is a whole number, use a denominator of 1. Once you are sure you have the correct answer, press Check Answer to see if you were correct. If at any point you are stumped, feel free to click the Show Solution button. Good luck!</p>
+
+<div class="numbertextdiv"><table><tr><td><span id="Frac1" class="numbertext">x</span><hr width="25" /><span id="Frac2" class="numbertext">x</span></td><td>+</td><td><span id="Frac3" class="numbertext">x</span><hr width="25" /><span id="Frac4" class="numbertext">x</span></td></tr></table></div>
+<br />
+<form>
+<table><tr><td><input type="text" name="answer1" id="answer1" class="inputbox" /><br /><hr /><input type="text" name="answer2" id="answer2" class="inputbox" /></td></tr></table><br /><br />
+<button type="button" onclick="CheckAnswer()">Check Answer</button>
+<button type="button" onclick="ShowSolution()">Show Solution</button>
+<button type="button" onclick="NewProblem()">New Problem</button></form>
+<br />
+<br />
+<div style="margin-top:100px"><h1 id="feedback">&nbsp;</h1>
+<p id="solution">&nbsp;</p></div></center>
+
+<!-- <p><span id="Test1">x</span> --- <span id="Test2">x</span> --- <span id="Test3">x</span></p>
+<p><span id="Test4">x</span> --- <span id="Test5">x</span></p> -->
+<script>
+
+function NewProblem()
+{
+problemtype=Math.floor(Math.random()*2)+1;
+switch(problemtype)
+{
+case 1:
+window.location.replace("FractionAddition.html");
+break;
+case 2:
+window.location.replace("FractionSubtraction.html");
+break;
+}}
+
+function CheckAnswer()
+{
+// remainder=value1-(Math.floor(value1/value2)*value2)
+if (correct1==document.getElementById("answer1").value && correct2==document.getElementById("answer2").value)
+//if (correct2==document.getElementById("answer2").value)
+{document.getElementById("feedback").innerHTML="You got it!";}
+else
+{if (document.getElementById("answer1").value/correct1==document.getElementById("answer2").value/correct2)
+{document.getElementById("feedback").innerHTML="Can you simplify that fraction a little more?";}
+else
+{document.getElementById("feedback").innerHTML="Try again.";}
+}
+}
+
+function ShowSolution()
+{
+//part1="The two denominators' lowest common multiple is " + LCM(value2, value4) + ", since " + LCM(value2, value4) + "/" + value2 + "=" + LCM(value2,value4)/value2 + ", and " + LCM(value2, value4) + "/" + value4 + "=" + LCM(value2,value4)/value4 + "; this is the denominator of our answer.";
+//part2="You have to multiply the numerator and denominator of first fraction by " + LCM(value2, value4)/value2 + " in order for its denominator to be " + LCM(value2, value4) + ", so the numerator of the first fraction is " + value1 + "*" + LCM(value2, value4)/value2 + "=" + (value1*LCM(value2, value4)/value2) + ".";
+//part3="You have to multiply the numerator and denominator of second fraction by " + LCM(value2, value4)/value4 + " in order for its denominator to be " + LCM(value2, value4) + ", so the numerator of the second fraction is " + value3 + "*" + LCM(value2, value4)/value4 + "=" + (value3*LCM(value2, value4)/value4) + ".";
+//part4="Add the two numerators together to get " + (value1*LCM(value2, value4)/value2+value3*LCM(value2, value4)/value4) + ", which is the numerator of our answer."
+//part5="Now we have the numerator and denominator for our answer: our answer is " + (value1*LCM(value2, value4)/value2+value3*LCM(value2, value4)/value4) + "/" + LCM(value2, value4) + "."
+//fullsolution=part1 + "<br />" + part2 + "<br />" + part3 + "<br />" + part4 + "<br />" + part5;
+part1="<table><tr><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>+</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td></table>=<br />";
+part2="<table><tr><td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>+</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td></table>=<br />";
+part3="<table><tr><td>"+(value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td></table>";
+part4="&nbsp;";
+//if (value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4!=correct1) & (value2*LCM(value2,value4)/value2!=correct2)
+if (fakecorrect1!=correct1)
+{part4="=<br /><table><tr><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
+fullsolution=part1+part2+part3+part4;
+document.getElementById("solution").innerHTML=fullsolution;
+}
+
+function HCF(number1, number2)
+{
+var hcf=1;
+for (var i=0; i<=Math.min(number1, number2);i++)
+{
+if (number1 % i==0 && number2 % i==0)
+{hcf=i}
+}
+return hcf;
+}
+
+function LCM(number1, number2)
+{
+return number1*number2/HCF(number1,number2);
+}
+
+//initialize()
+//function initialize()
+//{
+value1=Math.floor(Math.random()*6)+1;
+value2=Math.floor(Math.random()*8)+1;
+value3=Math.floor(Math.random()*6)+1;
+value4=Math.floor(Math.random()*10)+1;
+fakecorrect1=value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4
+fakecorrect2=LCM(value2, value4);
+correct1=fakecorrect1/HCF(fakecorrect1,fakecorrect2)
+correct2=fakecorrect2/HCF(fakecorrect1,fakecorrect2)
+//}
+document.getElementById("Frac1").innerHTML=value1;
+document.getElementById("Frac2").innerHTML=value2;
+document.getElementById("Frac3").innerHTML=value3;
+document.getElementById("Frac4").innerHTML=value4;
+//document.getElementById("Test1").innerHTML=correct1;
+//document.getElementById("Test2").innerHTML=correct2;
+//document.getElementById("Test3").innerHTML=correct3;
+//document.getElementById("Test4").innerHTML=value1 % value2;
+//document.getElementById("Test5").innerHTML=HCF(value1 % value2);
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<html><head><title>Fractionifier!</title>
+<link rel="stylesheet" type="text/css" href="StyleSheet.css"></head>
+
+<body>
+<center style="margin-top: 25%">
+<div class="numbertextdiv"><span id="Frac1" class="numbertext">x</span><hr width="25" /><span id="Frac2" class="numbertext">x</span></div>
+<form>
+<table><tr><td><input type="text" name="answer1" id="answer1" class="inputbox" /></td><td><input type="text" name="answer2" id="answer2" class="inputbox" /><br /><hr /><input type="text" name="answer3" id="answer3" class="inputbox" /></td></tr></table>
+<button type="button" onclick="CheckAnswer()">Click Me!</button></form></center>
+
+
+
+<!-- <p><span id="Test1">x</span> --- <span id="Test2">x</span> --- <span id="Test3">x</span></p>
+<p><span id="Test4">x</span> --- <span id="Test5">x</span></p> -->
+<script>
+
+function initialize()
+{
+value1=Math.floor(Math.random()*20)+1;
+value2=Math.floor(Math.random()*8)+1;
+correct1=Math.floor(value1/value2);
+correct2=(value1 % value2)/HCF(value1, value2);
+correct3=value2/HCF(value1, value2);
+}
+
+function CheckAnswer()
+{
+
+// remainder=value1-(Math.floor(value1/value2)*value2)
+if (correct1==document.getElementById("answer1").value & correct2==document.getElementById("answer2").value)
+{alert("yep")}
+}
+
+function HCF(number1, number2)
+{
+var hcf=1;
+for (var i=0; i<=Math.min(number1, number2);i++)
+{
+if (number1 % i==0 && number2 % i==0)
+{hcf=i}
+}
+return hcf;
+}
+
+initialize()
+
+document.getElementById("Frac1").innerHTML=value1;
+document.getElementById("Frac2").innerHTML=value2;
+//document.getElementById("Test1").innerHTML=correct1;
+//document.getElementById("Test2").innerHTML=correct2;
+//document.getElementById("Test3").innerHTML=correct3;
+//document.getElementById("Test4").innerHTML=value1 % value2;
+//document.getElementById("Test5").innerHTML=HCF(value1 % value2);
+</script>
+
+</body>
+</html>

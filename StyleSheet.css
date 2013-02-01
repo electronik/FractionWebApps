@@ -1,0 +1,30 @@
+body {
+background-color: #7DC9C9;
+}
+
+hr {
+color: #166E6E;
+}
+
+.inputbox {
+color: #F9C04F;
+font-weight: bold;
+width: 50px;
+}
+
+.numbertext {
+color: #B78624;
+font-size: 20px;
+font-weight: bold;
+}
+
+.numbertextdiv {
+background-color: #F9C04F;
+margin-left: 40%;
+margin-right: 40%;
+border-radius: 25px;
+}
+
+h1 {
+color: green;
+}
