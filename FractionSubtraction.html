@@ -14,7 +14,7 @@
 <button type="button" onclick="NewProblem()">New Problem</button></form>
 <br />
 <br />
-<div style="margin-top:100px"><h1 id="feedback">&nbsp;</h1>
+<div style="margin-top:20px"><h1 id="feedback">&nbsp;</h1>
 <p id="solution">&nbsp;</p></div></center>
 
 <!-- <p><span id="Test1">x</span> --- <span id="Test2">x</span> --- <span id="Test3">x</span></p>
@@ -23,7 +23,7 @@
 
 function NewProblem()
 {
-problemtype=Math.floor(Math.random()*2)+1;
+problemtype=Math.floor(Math.random()*4)+1;
 switch(problemtype)
 {
 case 1:
@@ -31,6 +31,12 @@ window.location.replace("FractionAddition.html");
 break;
 case 2:
 window.location.replace("FractionSubtraction.html");
+break;
+case 3:
+window.location.replace("FractionMultiplication.html");
+break;
+case 4:
+window.location.replace("FractionDivision.html");
 break;
 }}
 
@@ -62,14 +68,25 @@ function ShowSolution()
 //part3="<table><tr><td>Step 3: Combine the two fractions.</td><td>"+(value1*LCM(value2,value4)/value2-value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td></table>";
 //part4="&nbsp;";
 
-part1="<table><tr><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td></table>=<br />";
-part2="<table><tr><td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td></table>=<br />";
-part3="<table><tr><td>"+(value1*LCM(value2,value4)/value2-value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td></table>";
-part4="&nbsp;";
+//part1="<table><tr><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td></table>=<br />";
+//part2="<table><tr><td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td></table>=<br />";
+//part3="<table><tr><td>"+(value1*LCM(value2,value4)/value2-value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td></table>";
+//part4="&nbsp;";
+////if (value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4!=correct1) & (value2*LCM(value2,value4)/value2!=correct2)
+//if (fakecorrect1!=correct1)
+//{part4="<table><tr><td>Step 4: Simplify fraction.</td><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
+//{part4="=<br /><table><tr><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
+//fullsolution=part1+part2+part3+part4;
+//document.getElementById("solution").innerHTML=fullsolution;
+
+part1="<table><tr><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td><td>=</td>";
+part2="<td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td><td>=</td>";
+part3="<td>"+(value1*LCM(value2,value4)/value2-value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td>";
+part4="</tr></table>";
 //if (value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4!=correct1) & (value2*LCM(value2,value4)/value2!=correct2)
 if (fakecorrect1!=correct1)
 //{part4="<table><tr><td>Step 4: Simplify fraction.</td><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
-{part4="=<br /><table><tr><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
+{part4="<td>=</td><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
 fullsolution=part1+part2+part3+part4;
 document.getElementById("solution").innerHTML=fullsolution;
 }

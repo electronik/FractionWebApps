@@ -1,11 +1,11 @@
-<html><head><title>Fraction Addition Training Application Thingy</title>
+<html><head><title>Fraction Division Training Application Thingy</title>
 <link rel="stylesheet" type="text/css" href="StyleSheet.css"></head>
 
 <body>
 <center>
-<p>Add the two displayed fractions together and write the answer in simplest form. Post the answer's numerator in the top input-box, and the denominator on the bottom. In the event that the answer is a whole number, use a denominator of 1. Once you are sure you have the correct answer, press Check Answer to see if you were correct. If at any point you are stumped, feel free to click the Show Solution button. Good luck!</p>
+<p>Divide the second displayed fraction from the first one and write the answer in simplest form. Post the answer's numerator in the top input-box, and the denominator on the bottom. In the event that the answer is a whole number, use a denominator of 1. Once you are sure you have the correct answer, press Check Answer to see if you were correct. If at any point you are stumped, feel free to click the Show Solution button. Good luck!</p>
 
-<div class="numbertextdiv"><table><tr><td><span id="Frac1" class="numbertext">x</span><hr width="25" /><span id="Frac2" class="numbertext">x</span></td><td>+</td><td><span id="Frac3" class="numbertext">x</span><hr width="25" /><span id="Frac4" class="numbertext">x</span></td></tr></table></div>
+<div class="numbertextdiv"><table><tr><td><span id="Frac1" class="numbertext">x</span><hr width="25" /><span id="Frac2" class="numbertext">x</span></td><td>/</td><td><span id="Frac3" class="numbertext">x</span><hr width="25" /><span id="Frac4" class="numbertext">x</span></td></tr></table></div>
 <br />
 <form>
 <table><tr><td><input type="text" name="answer1" id="answer1" class="inputbox" /><br /><hr /><input type="text" name="answer2" id="answer2" class="inputbox" /></td></tr></table><br /><br />
@@ -63,27 +63,21 @@ function ShowSolution()
 //part5="Now we have the numerator and denominator for our answer: our answer is " + (value1*LCM(value2, value4)/value2+value3*LCM(value2, value4)/value4) + "/" + LCM(value2, value4) + "."
 //fullsolution=part1 + "<br />" + part2 + "<br />" + part3 + "<br />" + part4 + "<br />" + part5;
 
-//part1="<table><tr><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>+</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td></table>=<br />";
-//part2="<table><tr><td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>+</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td></table>=<br />";
-//part3="<table><tr><td>"+(value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td></table>";
+//part1="<table><tr><td>Step 1: Match the denominators through multiplication.</td><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td></table>=<br />";
+//part2="<table><tr><td>Step 2: Rewrite as two simple fractions.</td><td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>-</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td></table>=<br />";
+//part3="<table><tr><td>Step 3: Combine the two fractions.</td><td>"+(value1*LCM(value2,value4)/value2-value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td></table>";
 //part4="&nbsp;";
-////if (value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4!=correct1) & (value2*LCM(value2,value4)/value2!=correct2)
-//if (fakecorrect1!=correct1)
-//{part4="=<br /><table><tr><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
-//fullsolution=part1+part2+part3+part4;
-//document.getElementById("solution").innerHTML=fullsolution;
 
-part1="<table><tr><td>"+value1+"*"+LCM(value2,value4)/value2+"<hr />"+value2+"*"+LCM(value2,value4)/value2+"</td><td>+</td><td>"+value3+"*"+LCM(value2,value4)/value4+"<hr />"+value4+"*"+LCM(value2,value4)/value4+"</td><td>=</td>";
-part2="<td>"+value1*LCM(value2,value4)/value2+"<hr />"+value2*LCM(value2,value4)/value2+"</td><td>+</td><td>"+value3*LCM(value2,value4)/value4+"<hr />"+value4*LCM(value2,value4)/value4+"</td><td>=</td>";
-part3="<td>"+(value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4)+"<hr />"+value2*LCM(value2,value4)/value2+"</td>";
+part1="<table><tr><td>"+value1+"<hr />"+value2+"</td><td>*</td><td>"+value4+"<hr />"+value3+"</td><td>=</td>";
+part2="<td>"+value1+"*"+value4+"<hr />"+value2+"*"+value3+"</td><td>=</td>";
+part3="<td>"+value1*value4+"<hr />"+value2*value3+"</td>";
 part4="</tr></table>";
 //if (value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4!=correct1) & (value2*LCM(value2,value4)/value2!=correct2)
 if (fakecorrect1!=correct1)
+//{part4="<table><tr><td>Step 4: Simplify fraction.</td><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
 {part4="<td>=</td><td>"+correct1+"<hr />"+correct2+"</td></tr></table>";}
 fullsolution=part1+part2+part3+part4;
 document.getElementById("solution").innerHTML=fullsolution;
-
-
 }
 
 function HCF(number1, number2)
@@ -105,12 +99,18 @@ return number1*number2/HCF(number1,number2);
 //initialize()
 //function initialize()
 //{
+//value1=1;
+//value2=1;
+//value3=1;
+//value4=1;
+//while (value1/value2<=value3/value4) {
 value1=Math.floor(Math.random()*6)+1;
 value2=Math.floor(Math.random()*8)+1;
 value3=Math.floor(Math.random()*6)+1;
-value4=Math.floor(Math.random()*10)+1;
-fakecorrect1=value1*LCM(value2,value4)/value2+value3*LCM(value2,value4)/value4
-fakecorrect2=LCM(value2, value4);
+value4=Math.floor(Math.random()*8)+1;
+// }
+fakecorrect1=value1*value4
+fakecorrect2=value2*value3;
 correct1=fakecorrect1/HCF(fakecorrect1,fakecorrect2)
 correct2=fakecorrect2/HCF(fakecorrect1,fakecorrect2)
 //}
